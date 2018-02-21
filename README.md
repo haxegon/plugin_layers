@@ -1,5 +1,5 @@
 # Layers (version 0.1.0 (2018-02-21))
-## A plugin for Haxegon: http://www.haxegon.com
+### A plugin for Haxegon: http://www.haxegon.com
 
 **Layers** is a simplified display list for Haxegon! It allows you to create and destroy graphical layers on the fly.
 
