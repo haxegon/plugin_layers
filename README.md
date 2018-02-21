@@ -9,7 +9,7 @@ With the **Layers** plugin, you can:
  - Move, rotate, and scale layers independently.
  - Easily apply movement, rotation and scaling to the screen layer - useful for e.g. screenshake effects.
 
-**Layers** is very lightweight, and has no dependancies on other libraries or plugins.
+**Layers** is very lightweight, and has no dependancies on other libraries or plugins (other than Haxegon).
 
 ## Setup
 
