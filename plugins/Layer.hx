@@ -35,19 +35,21 @@ private class HaxegonLayer{
 class Layer{
 	/** Enable the plugin. */
 	public static function enable(){
-		Core.registerplugin("layers", "0.1.0");
-		Core.checkrequirement("layers", "haxegon", "0.12.0");
-		
-		layerindex = new Map<String, HaxegonLayer>();
-		
-		var screenlayer:HaxegonLayer = new HaxegonLayer(-1, -1);
-		screenlayer.rendertex = Gfx.backbuffer;
-		screenlayer.img = Gfx.screen;
-		screenlayer.width = Gfx.screenwidth;
-		screenlayer.height = Gfx.screenheight;
-	  screenlayer.alpha = 1.0;
-		
-		layerindex.set("screen", screenlayer);
+    if(!enabled){
+      Core.registerplugin("layers", "0.1.0");
+      Core.checkrequirement("layers", "haxegon", "0.12.0");
+      
+      layerindex = new Map<String, HaxegonLayer>();
+      
+      var screenlayer:HaxegonLayer = new HaxegonLayer(-1, -1);
+      screenlayer.rendertex = Gfx.backbuffer;
+      screenlayer.img = Gfx.screen;
+      screenlayer.width = Gfx.screenwidth;
+      screenlayer.height = Gfx.screenheight;
+      screenlayer.alpha = 1.0;
+      
+      layerindex.set("screen", screenlayer);
+    }
 		enabled = true;
 	}
 	
