@@ -15,7 +15,7 @@ With the **Layers** plugin, you can:
 
 To install the **Layers** plugin, <a href="https://raw.githubusercontent.com/haxegon/plugin_layers/master/plugins/Layer.hx">download this Layers.hx file</a>, and copy it into your own project's plugins folder.
 
-# Usage
+## Usage
 
 Here is a simple example:
 
