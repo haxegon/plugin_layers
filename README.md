@@ -25,9 +25,12 @@ import haxegon.*;
 class Main {
   function init(){
     Layer.create("foreground");
+		  Layer.attach("foreground");
   }
   
   function update(){
+		  Gfx.clearscreen(0x444444);
+    
     if (Mouse.leftheld()){
       Layer.drawto("foreground");
       Gfx.fillcircle(Mouse.x, Mouse.y, Random.float(10, 15), Col.WHITE, 0.75);
