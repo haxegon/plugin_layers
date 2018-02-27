@@ -25,11 +25,11 @@ import haxegon.*;
 class Main {
   function init(){
     Layer.create("foreground");
-		  Layer.attach("foreground");
+    Layer.attach("foreground");
   }
   
   function update(){
-		  Gfx.clearscreen(0x444444);
+    Gfx.clearscreen(0x444444);
     
     if (Mouse.leftheld()){
       Layer.drawto("foreground");
