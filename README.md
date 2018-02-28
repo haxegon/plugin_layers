@@ -49,7 +49,7 @@ See <a href="https://github.com/haxegon/plugin_layers/tree/master/examples">the 
 
 ## Documentation
 
-See <a href="https://github.com/haxegon/plugin_layers/tree/master/documentation">the documentation folder</a> for complete documentation.
+See <a href="https://github.com/haxegon/plugin_layers/wiki">the wiki</a> for complete documentation.
 
 ## About Layers
 
