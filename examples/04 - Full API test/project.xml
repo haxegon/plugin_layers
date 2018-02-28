@@ -4,8 +4,8 @@
   <set name="windowheight" value="720" />
   
 	<meta 
-    title="Layers Plug In" 
-    package="com.haxegon.pluginlayers" 
+    title="Layers Plug In API Test" 
+    package="com.haxegon.layersapitest" 
     version="1.0.0" 
     company="Your name here" 
   />
@@ -14,7 +14,7 @@
 	<app 
       main="haxegon.Load"
       path="bin" 
-      file="pluginlayers" 
+      file="layersapitest" 
    />
 
   <window width="${windowwidth}" height="${windowheight}" if="flash || cpp"></window>

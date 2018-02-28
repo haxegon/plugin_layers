@@ -4,8 +4,8 @@
   <set name="windowheight" value="720" />
   
 	<meta 
-    title="New Project" 
-    package="com.yournamehere.newproject" 
+    title="Split Layers Example" 
+    package="com.yournamehere.splitlayers" 
     version="1.0.0" 
     company="Your name here" 
   />
@@ -14,7 +14,7 @@
 	<app 
       main="haxegon.Load"
       path="bin" 
-      file="newproject" 
+      file="splitlayers" 
    />
 
   <window width="${windowwidth}" height="${windowheight}" if="flash || cpp"></window>
