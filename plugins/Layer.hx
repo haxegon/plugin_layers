@@ -41,17 +41,40 @@ class Layer{
       
       layerindex = new Map<String, HaxegonLayer>();
       
+			screenready = false;
       var screenlayer:HaxegonLayer = new HaxegonLayer(-1, -1);
       screenlayer.rendertex = Gfx.backbuffer;
       screenlayer.img = Gfx.screen;
       screenlayer.width = Gfx.screenwidth;
       screenlayer.height = Gfx.screenheight;
       screenlayer.alpha = 1.0;
+			
+			if (screenlayer.img != null){
+				screenready = true;
+			}
       
       layerindex.set("screen", screenlayer);
     }
 		enabled = true;
 	}
+	
+	private static function preparescreenlayer(){
+		if (!screenready){
+			var screenlayer:HaxegonLayer = layerindex.get("screen");
+			screenlayer.rendertex = Gfx.backbuffer;
+      screenlayer.img = Gfx.screen;
+      screenlayer.width = Gfx.screenwidth;
+      screenlayer.height = Gfx.screenheight;
+      screenlayer.alpha = 1.0;
+			
+			if (screenlayer.img != null){
+				screenready = true;
+			}
+			
+			layerlistdirty = true;
+		}
+	}
+	private static var screenready:Bool = false;
 	
 	/** Create a new layer.
 	 * layername: The name of the layer, as a string.
@@ -77,6 +100,8 @@ class Layer{
 		if (!enabled) enable();
 		layername = layername.toLowerCase();
 		
+		if (layername == "screen") preparescreenlayer();
+		
 		if (layerindex.exists(layername)){
 			return (Starling.current.stage.getChildIndex(layerindex.get(layername).img) > -1);
 		}else{
@@ -92,6 +117,8 @@ class Layer{
 	public static function attach(layername:String, ?x:Float = 0, ?y:Float = 0){
 		if (!enabled) enable();
 		layername = layername.toLowerCase();
+		
+		if (layername == "screen") preparescreenlayer();
 		
 		if (layerindex.exists(layername)){
 			if (!attached(layername)){
@@ -123,6 +150,8 @@ class Layer{
 		}else{
 			layername = layername.toLowerCase();
 			
+			if (layername == "screen") preparescreenlayer();
+			
 			if (layerindex.exists(layername)){
 				if(attached(layername)){
 					Starling.current.stage.removeChild(layerindex.get(layername).img);
@@ -138,6 +167,8 @@ class Layer{
 	
 	/** Get a list of all layers on the canvas, in order from back to front. */
 	public static function getlayers():Array<String> {
+		preparescreenlayer();
+		
 		if (layerlistdirty){
 			var newlayerlist:Array<Dynamic> = [];
 			
