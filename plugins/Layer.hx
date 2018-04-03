@@ -222,6 +222,37 @@ class Layer{
 		}
 	}
 	
+	/** Copy a layer to an image. The image must have already been created already.
+	 * layername: The name of the layer to copy.
+	 * imagename: The name of the image to paste to. 
+	 * xoffset/yoffset: Optional image x/y offset. */
+	public static function grabimagefromlayer(layername:String, imagename:String, ?xoffset:Float = 0, ?yoffset:Float = 0) {
+		if (!enabled) enable();
+		layername = layername.toLowerCase();
+		
+		if (layerindex.exists(layername)){
+			if (!Gfx.imageindex.exists(imagename)) {
+				Debug.log("ERROR: In Layer.grabimage, \"" + imagename + "\" does not exist. You need to create an image label first before using this function.");
+				return;
+			}
+			
+			//Make sure everything's on the screen before we grab it
+			Gfx.endmeshbatch();
+			
+			Gfx.haxegonimage = Gfx.images[Gfx.imageindex.get(imagename)];
+			// Acquire SubTexture and build an Image from it.
+			Gfx.promotetorendertarget(Gfx.haxegonimage.contents);
+			
+			// Copy the old texture to the new RenderTexture
+			Gfx.shapematrix.identity();
+			Gfx.shapematrix.translate(-xoffset, -yoffset);
+			
+			cast(Gfx.haxegonimage.contents.texture, RenderTexture).draw(layerindex.get(layername).img, Gfx.shapematrix);
+		}else{
+			trace("Error in Layer.grabimagefromlayer(\"" + layername + "\"): Layer \"" + layername + "\" does not exist.");
+		}
+	}
+	
 	/** Rotate a layer.
 	 * layername: The name of the layer to rotate.
 	 * rotation: Number of degrees to rotate the layer.
